@@ -1,5 +1,14 @@
+import { Route, Routes } from 'react-router-dom';
+import MainPage from './pages/MainPage';
+import TestPage from './pages/TestPage';
+
 const App = () => {
-  return <h1 className="text-3xl font-bold underline">Hello world!</h1>;
+  return (
+    <Routes>
+      <Route path="/" element={<MainPage />} />
+      <Route path="/test" element={<TestPage />} />
+    </Routes>
+  );
 };
 
 export default App;
