@@ -60,6 +60,11 @@ const SignUp = () => {
     }
   };
 
+  const handleTest = () => {
+    const jwtToken = localStorage.getItem('login');
+    console.log('jwtToken', jwtToken);
+  };
+
   return (
     <main className="max-w-[40rem] mx-auto mb-20">
       <h2 className="text-3xl font-semibold mt-20 text-center text-[#55B68F] mb-5">
@@ -146,7 +151,7 @@ const SignUp = () => {
         onClick={handleClickNext}
         className="w-full mt-12 bg-[#55B68F] px-3 py-3 text-white rounded-full font-medium text-sm"
       >
-        다음
+        <Link to="/signup/2">다음</Link>
       </button>
     </main>
   );

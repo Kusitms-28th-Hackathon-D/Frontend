@@ -5,6 +5,7 @@ import MainPage from './pages/MainPage';
 import TestPage from './pages/TestPage';
 import LoginPage from './pages/LoginPage';
 import Navbar from './base/Navbar';
+import Option from './components/signup/Option';
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/test" element={<TestPage />} />
         <Route path="/signup" element={<SignUpPage />} />
+        <Route path="/signup/2" element={<Option />} />
       </Routes>
     </BrowserRouter>
   );
