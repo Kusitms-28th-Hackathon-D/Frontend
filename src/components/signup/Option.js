@@ -1,7 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useRecoilState } from 'recoil';
+import { newUserState } from '../../states/signup';
 
 const Option = () => {
   const [selectedIdx, setSelectedIdx] = useState(-1); // 초기 선택된 인덱스는 -1로 설정
+  const [newUser, setNewUser] = useRecoilState(newUserState);
 
   const handleOnClick = (index) => {
     setSelectedIdx(index); // 클릭된 항목의 인덱스를 선택된 인덱스로 업데이트
@@ -10,6 +13,10 @@ const Option = () => {
   const isItemSelected = (index) => {
     return selectedIdx === index; // 해당 인덱스가 선택된 인덱스와 일치하는지 확인
   };
+
+  useEffect(() => {
+    console.log(newUser);
+  }, []);
 
   return (
     <main className="flex flex-col justify-center items-center text-center w-96 mx-auto">
