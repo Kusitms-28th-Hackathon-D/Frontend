@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const Badge = ({ label, newClass }) => {
   return (
     <span className={`block bg-[#F2F2F2] px-7 py-3 rounded-full text-[#444444] text-sm ${newClass ? newClass : ''}`}>
@@ -21,15 +23,15 @@ const KeywordSection = () => {
         <div className="mt-24 mb-24">
           <div className="flex items-center mb-8">
             <Badge label={'간단한 분류 작업을 하는 방법'} newClass="me-4 w-60 text-center" />
-            저에 대해 알려주세요
+            <Link to="/mypage/question">저에 대해 알려주세요</Link>
           </div>
           <div className="flex items-center mb-8">
             <Badge label="바리스타가 되는 방법 " newClass="me-4 w-60 text-center" />
-            바리스타로써 저는?
+            <Link to="/mypage/question">바리스타로써 저는?</Link>
           </div>
           <div className="flex items-center mb-8">
             <Badge label="효과적인 커뮤니케이션 방법" newClass="me-4 w-60 text-center" />
-            저는 어떤 사람인가요?
+            <Link to="/mypage/question">저는 어떤 사람인가요?</Link>
           </div>
         </div>
       </div>
