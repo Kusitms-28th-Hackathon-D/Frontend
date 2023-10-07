@@ -10,7 +10,7 @@ const Login = () => {
 
   const handleLogin = async () => {
     axios
-      .post('https://api.kusitms28.shop/auth/signIn', {
+      .post(process.env.REACT_APP_API + '/auth/signIn', {
         email: email,
         password: password,
       })
