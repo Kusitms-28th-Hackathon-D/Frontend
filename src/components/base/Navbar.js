@@ -20,23 +20,31 @@ const Navbar = () => {
     <nav
       className={`sticky top-0 z-50 w-full bg-white duration-150 ${scrollPosition > 0 ? 'shadow-md' : 'shadow-none'}`}
     >
-      <div className="flex justify-between items-center max-w-5xl mx-auto px-5 lg:px-0 h-12">
+      <div className="flex justify-between items-center gap-10 max-w-5xl mx-auto px-5 lg:px-0 h-12">
         <Link to="/" className="me-7">
-          <span className="text-lg font-semibold">로고</span>
+          <img src="/images/logo/logo.png" />
         </Link>
-        <ul className="flex gap-5 flex-1">
+        <ul className="flex justify-end gap-10 flex-1 text-[#333333]">
           <li>
-            <Link to="/test">테스트</Link>
+            <Link to="/mypage">커리어 명함</Link>
+          </li>
+          <li>
+            <Link to="/">커리어 그룹</Link>
           </li>
         </ul>
-        <ul className="flex items-center gap-5">
+        <ul className="flex items-center gap-7">
           <li>
-            <Link to="/login" className="block bg-[#55B68F] text-white font-medium text-sm px-3 py-1.5 rounded-md">
+            <Link
+              to="/login"
+              className="block bg-[#55B68F] text-white font-medium text-sm px-5 py-1.5 rounded-full text-sm"
+            >
               로그인
             </Link>
           </li>
           <li>
-            <Link to="/signup">회원가입</Link>
+            <Link to="/signup" className="text-[#55B68F] font-semibold">
+              회원가입
+            </Link>
           </li>
         </ul>
       </div>
