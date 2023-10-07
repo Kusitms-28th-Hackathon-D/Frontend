@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -46,6 +47,15 @@ const SignUp = () => {
   const handleClickNext = () => {
     if (!Object.values(validation).includes(false)) {
       // TODO: api 연결
+      axios
+        .post(process.env.REACT_APP_API + '/auth/signUp', {
+          email: email,
+          password: passwd,
+          role: 'USER',
+        })
+        .then((res) => {
+          console.log('res', res);
+        });
     } else {
       alert('비밀번호가 일치하지 않습니다.');
     }
