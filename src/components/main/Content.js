@@ -10,6 +10,9 @@ const Content = () => {
       <Link to="/login" className="block underline mt-3 text-blue-800">
         Go to Login Page
       </Link>
+      <Link to="/signup" className="block underline mt-3 text-blue-800">
+        Go to SignUp Page
+      </Link>
     </main>
   );
 };
