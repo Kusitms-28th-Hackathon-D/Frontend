@@ -9,7 +9,7 @@ import Ranking from './components/signup/Ranking';
 import MakeQuestion from './components/question/MakeQuestion';
 import GroupDetailPage from './pages/GroupDetailPage';
 import MyPage from './pages/MyPage';
-
+import MyQuestion from './components/mypage/MyQuestion';
 
 const App = () => {
   return (
@@ -24,6 +24,7 @@ const App = () => {
         <Route path="/makequestion" element={<MakeQuestion />} />
         <Route path="/group/1" element={<GroupDetailPage />} />
         <Route path="/mypage" element={<MyPage />} />
+        <Route path="/mypage/question" element={<MyQuestion />} />
       </Routes>
     </BrowserRouter>
   );
