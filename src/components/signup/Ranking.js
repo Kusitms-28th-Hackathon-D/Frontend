@@ -34,7 +34,7 @@ const Ranking = () => {
       </div>
       <div className="mt-12 flex flex-rol">
         <div className="w-[197px] h-[48px] flex justify-center text-center items-center rounded-[50px] text-[16px] border border-solid border-[#55B68F] border-1 text-[#55B68F] mr-5">
-          이전
+          <Link to="/signup/2">이전</Link>
         </div>
         <div className="w-[197px] h-[48px] flex justify-center text-center items-center rounded-[50px] text-[16px] bg-[#55B68F] text-[white]">
           <Link to="/signup/3">가입하기</Link>
