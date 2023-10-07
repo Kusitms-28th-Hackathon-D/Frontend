@@ -1,9 +1,9 @@
-import Content from '../components/test/Content';
+import TestContent from '../components/test/TestContent';
 
 const TestPage = () => {
   return (
     <>
-      <Content />
+      <TestContent />
     </>
   );
 };
