@@ -1,9 +1,13 @@
-import MainContent from '../components/main/MainContent';
+import AllGroup from '../components/main/AllGroup';
+import UserGroup from '../components/main/UserGroup';
+import Navbar from '../components/base/Navbar';
 
 const MainPage = () => {
   return (
     <>
-      <MainContent />
+      <Navbar />
+      <UserGroup />
+      <AllGroup />
     </>
   );
 };

@@ -1,7 +1,13 @@
 import SignUp from '../components/signup/SignUp';
+import Navbar from '../components/base/Navbar';
 
 const SignUpPage = () => {
-  return <SignUp />;
+  return (
+    <>
+      <Navbar />
+      <SignUp />
+    </>
+  );
 };
 
 export default SignUpPage;
