@@ -1,6 +1,7 @@
-import axios from 'axios';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
+import { newUserState } from '../../states/signup';
 
 const ValidationInitialState = {
   email: false,
@@ -12,11 +13,14 @@ const SignUp = () => {
   const [email, setEmail] = useState();
   const [passwd, setPasswd] = useState();
   const [validation, setValidation] = useState(ValidationInitialState);
+  const [newUser, setNewUser] = useRecoilState(newUserState);
+  const navigate = useNavigate();
 
   const handleChangeInput = (e) => {
     const { name, value } = e.target;
     if (name === 'email') {
       setEmail(value);
+      console.log(newUser);
       setValidation({
         ...validation,
         email: true,
@@ -45,25 +49,22 @@ const SignUp = () => {
   };
 
   const handleClickNext = () => {
-    if (!Object.values(validation).includes(false)) {
-      axios
-        .post(process.env.REACT_APP_API + '/auth/signUp', {
-          email: email,
-          password: passwd,
-          role: 'USER',
-        })
-        .then((res) => {
-          console.log('res', res);
-        });
-    } else {
-      alert('비밀번호가 일치하지 않습니다.');
+    if (Object.values(validation).includes(false)) {
+      return alert('비밀번호가 일치하지 않습니다.');
     }
+
+    setNewUser({
+      email: email,
+      password: passwd,
+    });
+
+    navigate('/signup/2');
   };
 
-  const handleTest = () => {
-    const jwtToken = localStorage.getItem('login');
-    console.log('jwtToken', jwtToken);
-  };
+  // const handleJWTTest = () => {
+  //   const jwtToken = localStorage.getItem('login');
+  //   console.log('jwtToken', jwtToken);
+  // };
 
   return (
     <main className="max-w-[40rem] mx-auto mb-20">
@@ -151,7 +152,7 @@ const SignUp = () => {
         onClick={handleClickNext}
         className="w-full mt-12 bg-[#55B68F] px-3 py-3 text-white rounded-full font-medium text-sm"
       >
-        <Link to="/signup/2">다음</Link>
+        다음
       </button>
     </main>
   );
