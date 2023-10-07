@@ -22,24 +22,21 @@ const Navbar = () => {
     >
       <div className="flex justify-between items-center max-w-5xl mx-auto px-5 h-12">
         <Link to="/" className="me-7">
-          <span className="text-lg font-semibold">Logo</span>
+          <span className="text-lg font-semibold">로고</span>
         </Link>
         <ul className="flex gap-5 flex-1">
           <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/test">Test</Link>
+            <Link to="/test">테스트</Link>
           </li>
         </ul>
         <ul className="flex items-center gap-5">
           <li>
-            <Link to="/login">Sign up</Link>
+            <Link to="/login" className="block bg-blue-700 text-white font-medium text-sm px-3 py-1.5 rounded-md">
+              로그인
+            </Link>
           </li>
           <li>
-            <Link to="/login" className="block bg-blue-700 text-white font-medium text-sm px-3 py-1.5 rounded-md">
-              Login
-            </Link>
+            <Link to="/signup">회원가입</Link>
           </li>
         </ul>
       </div>
