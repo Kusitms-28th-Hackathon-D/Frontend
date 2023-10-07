@@ -47,24 +47,31 @@ const SignUp = () => {
   const handleClickNext = () => {
     if (!Object.values(validation).includes(false)) {
       // TODO: api 연결
-      axios
-        .post(process.env.REACT_APP_API + '/auth/signUp', {
-          email: email,
-          password: passwd,
-          role: 'USER',
-        })
-        .then((res) => {
-          console.log('res', res);
-        });
+      // axios
+      //   .post(process.env.REACT_APP_API + '/auth/signUp', {
+      //     email: email,
+      //     password: passwd,
+      //     role: 'USER',
+      //   })
+      //   .then((res) => {
+      //     console.log('res', res);
+      //   });
     } else {
       alert('비밀번호가 일치하지 않습니다.');
     }
+  };
+
+  const handleTest = () => {
+    const jwtToken = localStorage.getItem('login');
+    console.log('jwtToken', jwtToken);
   };
 
   return (
     <main className="flex flex-col justify-center items-center text-center w-96 mx-auto">
       <h2 className="text-2xl font-semibold mt-20">회원가입</h2>
       <div className="flex flex-col justify-center items-center mt-10 w-full">
+        <div onClick={handleTest}>get</div>
+
         <label className="block w-full text-start text-sm font-medium text-gray-600" htmlFor="email">
           이메일
         </label>
@@ -107,7 +114,7 @@ const SignUp = () => {
         onClick={handleClickNext}
         className="w-full mt-5 bg-blue-700 px-3 py-2 text-white rounded-md font-medium text-sm"
       >
-        다음
+        <Link to="/signup/2">다음</Link>
       </button>
       <div className="mt-3 text-sm">
         계정이 있으신가요?&nbsp;
