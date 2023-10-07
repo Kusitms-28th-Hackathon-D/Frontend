@@ -4,7 +4,7 @@ import SignUpPage from './pages/SignUpPage';
 import MainPage from './pages/MainPage';
 import TestPage from './pages/TestPage';
 import LoginPage from './pages/LoginPage';
-import Navbar from './base/Navbar';
+import Navbar from './components/base/Navbar';
 
 const App = () => {
   return (
