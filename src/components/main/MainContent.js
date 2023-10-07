@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-const Content = () => {
+const MainContent = () => {
   return (
     <main className="text-center pt-10">
       <h1 className="text-5xl font-bold">This is Main Page</h1>
@@ -17,4 +17,4 @@ const Content = () => {
   );
 };
 
-export default Content;
+export default MainContent;
