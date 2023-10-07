@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import Tag from '../signup/Tag';
 
 const FeatureItem = ({ label, onClick }) => {
   return (
@@ -34,9 +35,49 @@ const Badge = ({ label, newClass, onClick }) => {
 const MyPageContent = () => {
   const [featureList, setFeatureList] = useState([]);
   const [keywords, setKeyWords] = useState([]);
+  const [memberdata, setMemberData] = useState();
+  const [disability, setDisability] = useState();
+  const [ranking, setRanking] = useState();
+
+  const ETags = [
+    'ManagementandAdministration',
+    'SalesandMarketing',
+    'EducationandWelfare',
+    'HealthcareandMedical',
+    'ArtsandSports',
+    'InstallationandMaintenance',
+    'AgricultureForestryandFisheries',
+  ];
+  const Tags = ['경영 사무', '영업 판매', '교육 복지', '보건 의료', '예술 스포츠', '설치 정비', '농업 어업'];
+
+  const selectOption = ['PhysicalDisability', 'IntellectualDisability', 'HearingImpairment', 'SpeechDisorder', 'None'];
+  const test = [
+    '어떠한 장애물도 극복할 수 있어요',
+    '무한한 상상으로 세상을 그려 볼 수 있어요',
+    '고요한 세상에서 집중할 수 있어요',
+    '남들보다 느리지만 끝까지 포기하지 않아요.',
+  ];
 
   useEffect(() => {
     const accessToken = localStorage.getItem('accessToken');
+
+    axios
+      .get(process.env.REACT_APP_API + '/namecard', {
+        headers: {
+          Authorization: accessToken,
+        },
+      })
+      .then((res) => {
+        console.log(res.data.disabilities);
+        const disabilityIdx = selectOption.findIndex((item) => item === res.data.disabilities);
+        setDisability(test[disabilityIdx]);
+        const rankingIdx = ETags.findIndex((item) => item === res.data.jobPriorities[0]);
+        setRanking(Tags[rankingIdx]);
+        console.log(disabilityIdx, rankingIdx);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
     axios
       .get(process.env.REACT_APP_API + '/namecard/keywords', {
@@ -77,9 +118,9 @@ const MyPageContent = () => {
               >
                 <h4 className="font-semibold">김단아</h4>
                 <div className="text-sm mt-1">
-                  <p>남들보다 느리지만 포기하지 않아요.</p>
+                  <p>{disability}</p>
                   <p>
-                    저는 <span className="text-[#FF617C]">경영 사무</span>를 희망해요{' '}
+                    저는 <span className="text-[#FF617C]">{ranking}</span>를 희망해요{' '}
                   </p>
                 </div>
               </div>
