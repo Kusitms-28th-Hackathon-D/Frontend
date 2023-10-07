@@ -3,7 +3,6 @@ import { BrowserRouter } from 'react-router-dom';
 import SignUpPage from './pages/SignUpPage';
 import MainPage from './pages/MainPage';
 import LoginPage from './pages/LoginPage';
-import Navbar from './components/base/Navbar';
 import Option from './components/signup/Option';
 import Ranking from './components/signup/Ranking';
 import MakeQuestion from './components/question/MakeQuestion';
@@ -14,7 +13,6 @@ import MyQuestion from './components/mypage/MyQuestion';
 const App = () => {
   return (
     <BrowserRouter>
-      <Navbar />
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/login" element={<LoginPage />} />
