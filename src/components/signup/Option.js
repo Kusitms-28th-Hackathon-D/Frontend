@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Option = () => {
   const [selectedIdx, setSelectedIdx] = useState(-1); // 초기 선택된 인덱스는 -1로 설정
@@ -74,7 +75,7 @@ const Option = () => {
           이전
         </div>
         <div className="w-[197px] h-10 flex justify-center text-center items-center rounded-[50px] text-[16px] bg-[#55B68F] text-[white]">
-          다음
+          <Link to="/signup/3">다음</Link>
         </div>
       </div>
     </main>
