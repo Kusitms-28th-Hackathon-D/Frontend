@@ -26,12 +26,15 @@ const Ranking = () => {
   };
   const navigate = useNavigate();
 
+  const formData = new FormData();
+
   const handleSubmit = () => {
+    formData.append('file', newUser.image);
     axios
       .post(process.env.REACT_APP_API + '/auth/signUp', {
         email: newUser.email,
         password: newUser.password,
-        imageUrl: newUser.image,
+        phonenum: newUser.phonenum,
         disability: newUser.disability,
         jobPriority1: ETags[selectedTagIndex[0]],
         jobPriority2: ETags[selectedTagIndex[1]],
@@ -39,7 +42,7 @@ const Ranking = () => {
         role: 'USER',
       })
       .then(() => {
-        navigate('/signup/success');
+        navigate('/');
       });
   };
 
