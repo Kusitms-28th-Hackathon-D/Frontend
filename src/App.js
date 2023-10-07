@@ -1,9 +1,9 @@
 import { Route, Routes } from 'react-router-dom';
 import { BrowserRouter } from 'react-router-dom';
+import SignUpPage from './pages/SignUpPage';
 import MainPage from './pages/MainPage';
 import TestPage from './pages/TestPage';
 import LoginPage from './pages/LoginPage';
-import SignUpPage from './pages/SignUpPage';
 import Navbar from './base/Navbar';
 
 const App = () => {
