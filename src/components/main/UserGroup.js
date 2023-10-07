@@ -30,7 +30,7 @@ const GroupItem = ({ name, host, type, badgeColor, imageUrl, linkUrl }) => {
 
   return (
     <Link to={linkUrl}>
-      <div className="overflow-hidden rounded-[20px]">
+      <div className="aspect-video overflow-hidden rounded-[20px]">
         <img src={imageUrl} className="object-cover w-full h-full" />
       </div>
       <div className="flex gap-4 justify-between items-start mt-5">
@@ -60,7 +60,7 @@ const UserGroup = () => {
           host="김상호"
           type="경영 사무"
           badgeColor="#FF617C"
-          imageUrl="/images/placeholder/placeholder.png"
+          imageUrl="/images/career-group/group1.png"
           linkUrl="/group/1"
         />
         <GroupItem
@@ -68,7 +68,7 @@ const UserGroup = () => {
           host="이장미"
           type="농림 어업"
           badgeColor="#FFC758"
-          imageUrl="/images/placeholder/placeholder.png"
+          imageUrl="/images/career-group/group2.png"
           linkUrl="/group/1"
         />
         <GroupItem
@@ -76,7 +76,7 @@ const UserGroup = () => {
           host="김상호"
           type="경영 사무"
           badgeColor="#7F8FFE"
-          imageUrl="/images/placeholder/placeholder.png"
+          imageUrl="/images/career-group/group3.png"
           linkUrl="/group/1"
         />
       </div>

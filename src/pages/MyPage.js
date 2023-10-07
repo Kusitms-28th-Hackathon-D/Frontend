@@ -1,11 +1,9 @@
-import KeywordSection from '../components/mypage/KeywordSection';
-import ProfileCard from '../components/mypage/ProfileCard';
+import MyPageContent from '../components/mypage/MyPageContent';
 
 const MyPage = () => {
   return (
     <>
-      <ProfileCard />
-      <KeywordSection />
+      <MyPageContent />
     </>
   );
 };

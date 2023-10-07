@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { useRecoilState } from 'recoil';
+import { allGroupListState } from '../../states/group';
 
 const GroupItem = ({ name, host, type, badgeColor, imageUrl, linkUrl }) => {
   const [badgeColorState, setBadgeColorState] = useState('');
@@ -30,7 +32,7 @@ const GroupItem = ({ name, host, type, badgeColor, imageUrl, linkUrl }) => {
 
   return (
     <Link to={linkUrl}>
-      <div className="overflow-hidden rounded-[20px]">
+      <div className="aspect-video overflow-hidden rounded-[20px]">
         <img src={imageUrl} className="object-cover w-full h-full" />
       </div>
       <div className="flex flex-col gap-3 justify-between items-start mt-5">
@@ -51,6 +53,8 @@ const GroupItem = ({ name, host, type, badgeColor, imageUrl, linkUrl }) => {
 };
 
 const AllGroup = () => {
+  const [allGroupList, setAllGroupList] = useRecoilState(allGroupListState);
+
   return (
     <section className="max-w-5xl mx-auto mt-24 mb-24 px-5 lg:px-0">
       <div className="flex justify-between items-center">
@@ -63,7 +67,7 @@ const AllGroup = () => {
           host="김상호"
           type="경영 사무"
           badgeColor="#FF617C"
-          imageUrl="/images/placeholder/placeholder.png"
+          imageUrl="/images/career-group/group4.png"
           linkUrl="/group/1"
         />
         <GroupItem
@@ -71,7 +75,7 @@ const AllGroup = () => {
           host="김상호"
           type="설치 장비"
           badgeColor="#7F8FFE"
-          imageUrl="/images/placeholder/placeholder.png"
+          imageUrl="/images/career-group/group5.png"
           linkUrl="/group/1"
         />
         <GroupItem
@@ -79,7 +83,7 @@ const AllGroup = () => {
           host="김지은"
           type="예술 예체능"
           badgeColor="#F7C6FF"
-          imageUrl="/images/placeholder/placeholder.png"
+          imageUrl="/images/career-group/group6.png"
           linkUrl="/group/1"
         />
         <GroupItem
@@ -87,7 +91,7 @@ const AllGroup = () => {
           host="한지아"
           type="보건 의료"
           badgeColor="#55B68F"
-          imageUrl="/images/placeholder/placeholder.png"
+          imageUrl="/images/career-group/group7.png"
           linkUrl="/group/1"
         />
       </div>

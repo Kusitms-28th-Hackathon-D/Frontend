@@ -1,8 +1,18 @@
-const GroupInfo = () => {
+import { useState } from 'react';
+import { useRecoilState } from 'recoil';
+import { allGroupListState, userGroupListState } from '../../states/group';
+
+const GroupInfo = ({ isVisibleFeedback, setIsVisibleFeedback }) => {
+  const [code, setCode] = useState('');
+  const [allGroupList, setAllGroupList] = useRecoilState(allGroupListState);
+  const [userGroupList, setUserGroupList] = useRecoilState(userGroupListState);
+
   return (
     <section className="flex max-w-5xl mx-auto mt-5 gap-10 px-5 lg:px-0">
       <div className="w-6/12">
-        <div className="bg-gray-300 w-full aspect-video rounded"></div>
+        <div className="bg-gray-300 w-full aspect-video rounded">
+          <img src="/images/career-group/group4.png" alt="group" />
+        </div>
         <div className="mt-5 flex justify-between">
           <span className="font-medium">
             9월 4일(월)
@@ -43,18 +53,36 @@ const GroupInfo = () => {
           </div>
         </div>
         <div>
-          <div className="flex items-center">
-            <label htmlFor="code" className="w-24 font-medium">
-              참여 코드
-            </label>
-            <input
-              type="text"
-              placeholder="참여 코드 입력"
-              className="w-full border-[1px] border-[#BBBBBB] px-2 py-3 rounded-lg text-center font-semibold"
-            />
-          </div>
-          <button className="w-full bg-[#55B68F] text-white text-sm font-semibold px-4 py-4 rounded-lg mt-4">
-            그룹 참여하기
+          {!isVisibleFeedback && (
+            <div className="flex items-center">
+              <label htmlFor="code" className="w-24 font-medium">
+                참여 코드
+              </label>
+              <input
+                type="text"
+                placeholder="참여 코드 입력"
+                className="w-full border-[1px] border-[#BBBBBB] px-2 py-3 rounded-lg text-center font-semibold"
+                onChange={(e) => {
+                  setCode(e.target.value);
+                }}
+              />
+            </div>
+          )}
+          <button
+            className="w-full bg-[#55B68F] text-white text-sm font-semibold px-4 py-4 rounded-lg mt-4"
+            onClick={() => {
+              if (code) {
+                const parsedGroup = allGroupList.filter((group) => group.name === '효과적인 엑셀 정리법');
+
+                setIsVisibleFeedback(true);
+                setAllGroupList(allGroupList.filter((group) => group.name !== '효과적인 엑셀 정리법'));
+                setUserGroupList([...userGroupList, parsedGroup]);
+              } else {
+                alert('참여 코드를 입력하세요!');
+              }
+            }}
+          >
+            {!isVisibleFeedback ? '그룹 참여하기' : '이미 참여한 그룹입니다.'}
           </button>
         </div>
       </div>

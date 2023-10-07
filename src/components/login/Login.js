@@ -27,7 +27,7 @@ const Login = () => {
 
   return (
     <main className="flex flex-col justify-center items-center text-center w-96 mx-auto">
-      <h2 className="text-2xl font-semibold mt-20">로그인</h2>
+      <h2 className="text-3xl font-semibold mt-20 text-[#55B68F]">로그인</h2>
       <form className="flex flex-col justify-center items-center mt-10 w-full">
         <label className="block w-full text-start text-sm font-medium text-gray-600" htmlFor="email">
           이메일
