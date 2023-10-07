@@ -16,6 +16,9 @@ const MainContent = () => {
       <Link to="/group/1" className="block underline mt-3 text-blue-800">
         그룹 디테일 페이지로 이동하기
       </Link>
+      <Link to="/mypage" className="block underline mt-3 text-blue-800">
+        마이 페이지로 이동하기
+      </Link>
     </main>
   );
 };
