@@ -4,8 +4,23 @@ import CircleNumber from './CircleNumber';
 import Delete from '../images/question/Delete.svg';
 import Plus from '../images/question/Plus.svg';
 import Tag from '../signup/Tag';
+import { useState } from 'react';
+import OptionInput from './OptionInput';
 
 const MakeQuestion = () => {
+  const [inputs, setInputs] = useState([]);
+  const [newInput, setNewInput] = useState('');
+
+  const addInput = () => {
+    setInputs([...inputs, newInput]);
+    setNewInput('');
+  };
+
+  const removeInput = (index) => {
+    const updatedInputs = [...inputs];
+    updatedInputs.splice(index, 1);
+    setInputs(updatedInputs);
+  };
   return (
     <main className="flex flex-col justify-center items-center text-center mx-auto">
       <div className="flex flex-row mt-20">
@@ -118,31 +133,18 @@ const MakeQuestion = () => {
             </div>
           </div>
           <div className="flex items-center font-medium text-[24px]">질문의 옵션을 작성해주세요!</div>
-        </div>
-        <div className="ml-[93px] mt-5 flex">
-          <div className="flex mr-[25px]">
-            <input
-              type="text"
-              placeholder="옵션을 작성해주세요"
-              className="
-            focus:outline-none
-            pl-[20px] pr-[30px] h-[48px] flex justify-center text-center items-center rounded-[50px] text-[16px] mr-5 bg-[#F2F2F2]"
-            />
-            <img className="flex items-center ml-[-45px]" src={Delete} />
-          </div>
-
-          <div className="flex">
-            <input
-              type="text"
-              placeholder="옵션을 작성해주세요"
-              className="
-            focus:outline-none
-            pl-[20px] pr-[30px] h-[48px] flex justify-center text-center items-center rounded-[50px] text-[16px] mr-5 bg-[#F2F2F2]"
-            />
-          </div>
-          <div className="flex items-center justify-center w-[44px] h-[44px] bg-[#F2F2F2] rounded-full">
+          <div
+            onClick={addInput}
+            className="flex items-center justify-center w-[44px] h-[44px] bg-[#F2F2F2] rounded-full ml-[10px]"
+          >
             <img src={Plus} />
           </div>
+        </div>
+        <div className="ml-[93px] mt-5 grid grid-cols-3 gap-12">
+          <OptionInput />
+          {inputs.map((input, index) => (
+            <OptionInput removeInput={removeInput} index={index} />
+          ))}
         </div>
         <div className="bg-[#D7F1E6] w-[642px] text-[20px] mt-10 rounded-full flex items-center justify-center">+</div>
         <div></div>
