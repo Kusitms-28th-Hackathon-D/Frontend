@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 
 const FeatureItem = ({ label, onClick }) => {
   return (
@@ -32,6 +33,25 @@ const Badge = ({ label, newClass, onClick }) => {
 
 const MyPageContent = () => {
   const [featureList, setFeatureList] = useState([]);
+  const [keywords, setKeyWords] = useState([]);
+
+  useEffect(() => {
+    const accessToken = localStorage.getItem('accessToken');
+
+    axios
+      .get(process.env.REACT_APP_API + '/namecard/keywords', {
+        headers: {
+          Authorization: accessToken,
+        },
+      })
+      .then((res) => {
+        console.log(res.data.keywords);
+        setKeyWords(res.data.keywords);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <main>
@@ -86,21 +106,19 @@ const MyPageContent = () => {
         <div>
           <h4 className="text-2xl text-[#444444]">김단아님의 BEST 키워드</h4>
           <div className="flex gap-4 mt-5">
-            {['사교성이 좋아요', '업무 효율이 좋아요', '추진력', '사교적이에요', '엑셀을 잘 다뤄요'].map(
-              (label, index) => (
-                <Badge
-                  key={index}
-                  label={label}
-                  onClick={() => {
-                    if (featureList.includes(label)) {
-                      setFeatureList(featureList.filter((feature) => feature !== label));
-                    } else {
-                      setFeatureList([...featureList, label]);
-                    }
-                  }}
-                />
-              ),
-            )}
+            {keywords.map((label, index) => (
+              <Badge
+                key={index}
+                label={label}
+                onClick={() => {
+                  if (featureList.includes(label)) {
+                    setFeatureList(featureList.filter((feature) => feature !== label));
+                  } else {
+                    setFeatureList([...featureList, label]);
+                  }
+                }}
+              />
+            ))}
           </div>
           <div className="mt-24 mb-24">
             <div className="flex items-center mb-8">
