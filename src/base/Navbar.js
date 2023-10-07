@@ -31,7 +31,7 @@ const Navbar = () => {
         </ul>
         <ul className="flex items-center gap-5">
           <li>
-            <Link to="/login" className="block bg-blue-700 text-white font-medium text-sm px-3 py-1.5 rounded-md">
+            <Link to="/login" className="block bg-[#55B68F] text-white font-medium text-sm px-3 py-1.5 rounded-md">
               로그인
             </Link>
           </li>
