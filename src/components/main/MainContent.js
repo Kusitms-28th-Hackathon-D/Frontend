@@ -13,6 +13,9 @@ const MainContent = () => {
       <Link to="/signup" className="block underline mt-3 text-blue-800">
         회원가입 페이지로 이동하기
       </Link>
+      <Link to="/group/1" className="block underline mt-3 text-blue-800">
+        그룹 디테일 페이지로 이동하기
+      </Link>
     </main>
   );
 };
