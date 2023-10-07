@@ -1,16 +1,23 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Number from './Number';
 import Tag from './Tag';
 import { Link } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
+import { newUserState } from '../../states/signup';
 
 const Ranking = () => {
   const [selectedTagIndex, setSelectedTagIndex] = useState([[-1], [-1], [-1]]); // 선택된 Tag의 인덱스, 초기값 -1로 설정
+  const [newUser, setNewUser] = useRecoilState(newUserState);
 
   const handleTagClick = (ranking, index) => {
     const updatedSelectedTagIndex = [...selectedTagIndex];
     updatedSelectedTagIndex[ranking] = [index];
     setSelectedTagIndex(updatedSelectedTagIndex);
   };
+
+  useEffect(() => {
+    console.log(newUser);
+  }, []);
 
   return (
     <main className="flex flex-col justify-center items-center text-center mx-auto">
