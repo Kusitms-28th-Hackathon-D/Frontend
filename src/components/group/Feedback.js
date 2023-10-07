@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const FeedbackItem = ({ imageUrl, name, content, borderPosition, backgroundColor }) => {
   const [bgColor, setBgColor] = useState('');
@@ -72,7 +73,9 @@ const Feedback = () => {
     <section className="max-w-5xl px-5 lg:px-0 mx-auto mb-16">
       <header className="flex justify-between items-center mt-24">
         <h4 className="text-2xl font-semibold">피드백 설문하기</h4>
-        <button className="bg-[#CDEDE0] px-12 py-3 rounded-lg">내 피드백 질문 올리기</button>
+        <button className="bg-[#CDEDE0] px-12 py-3 rounded-lg">
+          <Link to="/makequestion">내 피드백 질문 올리기</Link>
+        </button>
       </header>
       <div className="mt-10 whitespace-nowrap overflow-x-auto flex">
         <FeedbackItem
