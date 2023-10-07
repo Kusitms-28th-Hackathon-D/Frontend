@@ -1,22 +1,32 @@
+import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import { newUserState } from '../../states/signup';
+import { Link } from 'react-router-dom';
 
 const Option = () => {
-  const [selectedIdx, setSelectedIdx] = useState(-1); // 초기 선택된 인덱스는 -1로 설정
+  const selectOption = ['지채', '시각', '청각', '지적', '불편하지 않아요'];
+  const [selectedIdx, setSelectedIdx] = useState(-1);
   const [newUser, setNewUser] = useRecoilState(newUserState);
 
   const handleOnClick = (index) => {
-    setSelectedIdx(index); // 클릭된 항목의 인덱스를 선택된 인덱스로 업데이트
+    setSelectedIdx(index);
   };
 
   const isItemSelected = (index) => {
-    return selectedIdx === index; // 해당 인덱스가 선택된 인덱스와 일치하는지 확인
+    return selectedIdx === index;
   };
 
   useEffect(() => {
     console.log(newUser);
   }, []);
+
+  const handleNextClick = () => {
+    setNewUser((prevUser) => ({
+      ...prevUser,
+      selectOption: selectOption[selectedIdx],
+    }));
+  };
 
   return (
     <main className="flex flex-col justify-center items-center text-center w-96 mx-auto">
@@ -80,7 +90,10 @@ const Option = () => {
         <div className="w-[197px] h-[48px] flex justify-center text-center items-center rounded-[50px] text-[16px] border border-solid border-[#55B68F] border-1 text-[#55B68F] mr-5">
           <Link to="/signup">이전</Link>
         </div>
-        <div className="w-[197px] h-[48px] flex justify-center text-center items-center rounded-[50px] text-[16px] bg-[#55B68F] text-[white]">
+        <div
+          onClick={handleNextClick}
+          className="w-[197px] h-[48px] flex justify-center text-center items-center rounded-[50px] text-[16px] bg-[#55B68F] text-[white]"
+        >
           <Link to="/signup/3">다음</Link>
         </div>
       </div>

@@ -20,7 +20,7 @@ const Navbar = () => {
     <nav
       className={`sticky top-0 z-50 w-full bg-white duration-150 ${scrollPosition > 0 ? 'shadow-md' : 'shadow-none'}`}
     >
-      <div className="flex justify-between items-center max-w-5xl mx-auto px-5 h-12">
+      <div className="flex justify-between items-center max-w-5xl mx-auto px-5 lg:px-0 h-12">
         <Link to="/" className="me-7">
           <span className="text-lg font-semibold">로고</span>
         </Link>

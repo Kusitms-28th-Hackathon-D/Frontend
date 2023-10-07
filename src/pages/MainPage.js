@@ -1,9 +1,11 @@
-import MainContent from '../components/main/MainContent';
+import AllGroup from '../components/main/AllGroup';
+import UserGroup from '../components/main/UserGroup';
 
 const MainPage = () => {
   return (
     <>
-      <MainContent />
+      <UserGroup />
+      <AllGroup />
     </>
   );
 };
