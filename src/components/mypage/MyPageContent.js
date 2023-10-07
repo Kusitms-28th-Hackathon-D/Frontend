@@ -34,15 +34,34 @@ const Badge = ({ label, newClass, onClick }) => {
 const MyPageContent = () => {
   const [featureList, setFeatureList] = useState([]);
   const [questionList, setQuestionList] = useState([]);
+  const [keywords, setKeyWords] = useState([]);
   const labelArr = ['간단한 분류 작업을 하는 방법', '바리스타가 되는 방법', '효과적인 커뮤니케이션 방법'];
 
   useEffect(() => {
-    const token = localStorage.getItem('accessToken');
+    const accessToken = localStorage.getItem('accessToken');
+
+    axios
+      .get(process.env.REACT_APP_API + '/namecard/keywords', {
+        headers: {
+          Authorization: accessToken,
+        },
+      })
+      .then((res) => {
+        console.log(res.data.keywords);
+        setKeyWords(res.data.keywords);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  useEffect(() => {
+    const accessToken = localStorage.getItem('accessToken');
 
     axios
       .get(process.env.REACT_APP_API + '/members/question', {
         headers: {
-          Authorization: token,
+          Authorization: accessToken,
         },
       })
       .then((res) => {
