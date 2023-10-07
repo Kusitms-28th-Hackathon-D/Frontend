@@ -71,10 +71,9 @@ const Option = () => {
         </div>
       </div>
       <div className="mt-10 flex flex-rol">
-        <div className="w-[197px] h-10 flex justify-center text-center items-center rounded-[50px] text-[16px] border border-solid border-[#55B68F] border-1 text-[#55B68F] mr-5">
-          이전
+        <div className="w-[197px] h-[48px] flex justify-center text-center items-center rounded-[50px] text-[16px] border border-solid border-[#55B68F] border-1 text-[#55B68F] mr-5">
         </div>
-        <div className="w-[197px] h-10 flex justify-center text-center items-center rounded-[50px] text-[16px] bg-[#55B68F] text-[white]">
+        <div className="w-[197px] h-[48px] flex justify-center text-center items-center rounded-[50px] text-[16px] bg-[#55B68F] text-[white]">
           <Link to="/signup/3">다음</Link>
         </div>
       </div>
