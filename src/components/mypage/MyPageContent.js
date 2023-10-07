@@ -33,20 +33,24 @@ const Badge = ({ label, newClass, onClick }) => {
 
 const MyPageContent = () => {
   const [featureList, setFeatureList] = useState([]);
-  const [keywords, setKeyWords] = useState([]);
+  const [questionList, setQuestionList] = useState([]);
+  const labelArr = ['간단한 분류 작업을 하는 방법', '바리스타가 되는 방법', '효과적인 커뮤니케이션 방법'];
 
   useEffect(() => {
-    const accessToken = localStorage.getItem('accessToken');
+    const token = localStorage.getItem('accessToken');
 
     axios
-      .get(process.env.REACT_APP_API + '/namecard/keywords', {
+      .get(process.env.REACT_APP_API + '/members/question', {
         headers: {
-          Authorization: accessToken,
+          Authorization: token,
         },
       })
       .then((res) => {
-        console.log(res.data.keywords);
-        setKeyWords(res.data.keywords);
+        console.log(res.data.questions);
+        return res.data.questions;
+      })
+      .then((questionList) => {
+        setQuestionList(questionList);
       })
       .catch((err) => {
         console.log(err);
@@ -121,18 +125,21 @@ const MyPageContent = () => {
             ))}
           </div>
           <div className="mt-24 mb-24">
-            <div className="flex items-center mb-8">
-              <Badge label={'간단한 분류 작업을 하는 방법'} newClass="me-4 w-60 text-center" />
-              저에 대해 알려주세요
-            </div>
-            <div className="flex items-center mb-8">
+            {questionList.map((question, index) => (
+              <div key={index} className="flex items-center mb-8">
+                <Badge label={labelArr[index]} newClass="me-4 w-60 text-center" />
+                {question}
+              </div>
+            ))}
+
+            {/* <div className="flex items-center mb-8">
               <Badge label="바리스타가 되는 방법 " newClass="me-4 w-60 text-center" />
               바리스타로써 저는?
             </div>
             <div className="flex items-center mb-8">
               <Badge label="효과적인 커뮤니케이션 방법" newClass="me-4 w-60 text-center" />
               저는 어떤 사람인가요?
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
