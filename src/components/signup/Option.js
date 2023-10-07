@@ -4,7 +4,7 @@ import { useRecoilState } from 'recoil';
 import { newUserState } from '../../states/signup';
 
 const Option = () => {
-  const selectOption = ['지채', '시각', '청각', '지적', '불편하지 않아요'];
+  const selectOption = ['PhysicalDisability', 'IntellectualDisability', 'HearingImpairment', 'SpeechDisorder', 'None'];
   const [selectedIdx, setSelectedIdx] = useState(-1);
   const [newUser, setNewUser] = useRecoilState(newUserState);
 
@@ -23,7 +23,7 @@ const Option = () => {
   const handleNextClick = () => {
     setNewUser((prevUser) => ({
       ...prevUser,
-      selectOption: selectOption[selectedIdx],
+      disability: selectOption[selectedIdx],
     }));
   };
 
@@ -37,7 +37,7 @@ const Option = () => {
             onClick={() => handleOnClick(0)}
             className={`font-semibold rounded-tl-[60px] rounded-tr-[9px] rounded-bl-[9px] rounded-br-[30px] w-32 h-32 mr-10 
             flex justify-center items-center text-center
-            bg-${isItemSelected(0) ? '[#55B68F]' : 'zinc-100'} 
+            bg-${isItemSelected(0) ? '[#55B68F]' : '[#F2F2F2]'} 
             text-${isItemSelected(0) ? 'white' : 'black'}
             `}
           >
@@ -46,7 +46,7 @@ const Option = () => {
           <div
             onClick={() => handleOnClick(1)}
             className={`font-semibold rounded-tl-[9px] rounded-tr-[60px] rounded-bl-[30px] rounded-br-[9px] w-32 h-32 mr-10
-             bg-${isItemSelected(1) ? '[#55B68F]' : 'zinc-100'} 
+             bg-${isItemSelected(1) ? '[#55B68F]' : '[#F2F2F2]'} 
              text-${isItemSelected(1) ? 'white' : 'black'}
              flex justify-center items-center text-center`}
           >
@@ -55,7 +55,7 @@ const Option = () => {
           <div
             onClick={() => handleOnClick(2)}
             className={`font-semibold rounded-tl-[9px] rounded-tr-[30px] rounded-bl-[60px] rounded-br-[9px] w-32 h-32
-            bg-${isItemSelected(2) ? '[#55B68F]' : 'zinc-100'} 
+            bg-${isItemSelected(2) ? '[#55B68F]' : '[#F2F2F2]'} 
             text-${isItemSelected(2) ? 'white' : 'black'}
          flex justify-center items-center text-center`}
           >
@@ -66,7 +66,7 @@ const Option = () => {
           <div
             onClick={() => handleOnClick(3)}
             className={`font-semibold rounded-tl-[30px] rounded-tr-[9px] rounded-bl-[9px] rounded-br-[60px] w-32 h-32 mr-10
-            bg-${isItemSelected(3) ? '[#55B68F]' : 'zinc-100'} 
+            bg-${isItemSelected(3) ? '[#55B68F]' : '[#F2F2F2]'} 
             text-${isItemSelected(3) ? 'white' : 'black'}
          flex justify-center items-center text-center`}
           >
@@ -75,7 +75,7 @@ const Option = () => {
           <div
             onClick={() => handleOnClick(4)}
             className={`font-semibold rounded-[30px] w-32 h-32 mr-10 
-            bg-${isItemSelected(4) ? '[#55B68F]' : 'zinc-100'} 
+            bg-${isItemSelected(4) ? '[#55B68F]' : '[#F2F2F2]'} 
             text-${isItemSelected(4) ? 'white' : 'black'}
          flex justify-center items-center text-center`}
           >

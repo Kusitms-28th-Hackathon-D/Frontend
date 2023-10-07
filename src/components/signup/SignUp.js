@@ -7,11 +7,13 @@ const ValidationInitialState = {
   email: false,
   password: false,
   Vpassword: false,
+  phone: false,
 };
 
 const SignUp = () => {
   const [email, setEmail] = useState();
   const [passwd, setPasswd] = useState();
+  const [phone, setPhone] = useState();
   const [validation, setValidation] = useState(ValidationInitialState);
   const [newUser, setNewUser] = useRecoilState(newUserState);
   const navigate = useNavigate();
@@ -46,16 +48,26 @@ const SignUp = () => {
         });
       }
     }
+    if (name === 'phone') {
+      setPhone(value);
+      setValidation({
+        ...validation,
+        phone: true,
+      });
+    }
   };
 
   const handleClickNext = () => {
     if (Object.values(validation).includes(false)) {
       return alert('비밀번호가 일치하지 않습니다.');
     }
+    console.log('image', image);
 
     setNewUser({
       email: email,
       password: passwd,
+      phonenum: phone,
+      image: image,
     });
 
     navigate('/signup/2');
@@ -66,6 +78,22 @@ const SignUp = () => {
   //   console.log('jwtToken', jwtToken);
   // };
 
+  const [image, setImage] = useState(null);
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+
+    if (file) {
+      const reader = new FileReader();
+
+      reader.onload = (e) => {
+        setImage(e.target.result);
+      };
+
+      reader.readAsDataURL(file);
+    }
+  };
+
   return (
     <main className="max-w-[40rem] mx-auto mb-20">
       <h2 className="text-3xl font-semibold mt-20 text-center text-[#55B68F] mb-5">
@@ -73,12 +101,29 @@ const SignUp = () => {
       </h2>
       <div className="flex">
         <div className="w-96 flex flex-col items-center pt-6 me-16">
-          <div className="w-full aspect-square bg-[#F2F2F2] rounded-[30px]">
-            {/* <img src="https://api.multiavatar.com/hello.png" alt="avatar" /> */}
+          <div className="w-full aspect-square bg-[#F2F2F2] rounded-[30px] ">
+            {image && (
+              <img
+                className="w-full h-full object-cover rounded-[30px]"
+                src={image}
+                alt="미리보기"
+                style={{ maxWidth: '100%' }}
+              />
+            )}
           </div>
-          <button className="border-[1px] border-[#55B68F] mt-5 px-4 py-2 text-[#55B68F] font-medium rounded-full">
+          <label
+            className="border-[1px] border-[#55B68F] mt-5 px-4 py-2 text-[#55B68F] font-medium rounded-full"
+            htmlFor="input-file"
+          >
             사진 올리기
-          </button>
+          </label>
+          <input
+            id="input-file"
+            type="file"
+            accept="image/*"
+            style={{ display: 'none' }}
+            onChange={handleImageChange}
+          />
         </div>
         <div className="flex flex-col justify-center items-center text-center w-full ">
           <div className="flex flex-col justify-center items-center w-full">
@@ -117,7 +162,7 @@ const SignUp = () => {
               name="phone"
               id="phone"
               placeholder="전화번호를 입력해주세요."
-              // onChange={handleChangeInput}
+              onChange={handleChangeInput}
             />
           </div>
           <div className="flex flex-col justify-center items-center mt-10 w-full">
