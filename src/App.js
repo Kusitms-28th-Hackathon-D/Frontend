@@ -6,6 +6,7 @@ import TestPage from './pages/TestPage';
 import LoginPage from './pages/LoginPage';
 import Navbar from './components/base/Navbar';
 import Option from './components/signup/Option';
+import Ranking from './components/signup/Ranking';
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="/test" element={<TestPage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/signup/2" element={<Option />} />
+        <Route path="/signup/3" element={<Ranking />} />
       </Routes>
     </BrowserRouter>
   );
