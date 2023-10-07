@@ -3,15 +3,15 @@ import { Link } from 'react-router-dom';
 const MainContent = () => {
   return (
     <main className="text-center pt-10">
-      <h1 className="text-5xl font-bold">This is Main Page</h1>
+      <h1 className="text-5xl font-bold">메인 페이지</h1>
       <Link to="/test" className="block underline mt-5 text-blue-800">
-        Go to Test Page
+        테스트 페이지로 이동하기
       </Link>
       <Link to="/login" className="block underline mt-3 text-blue-800">
-        Go to Login Page
+        로그인 페이지로 이동하기
       </Link>
       <Link to="/signup" className="block underline mt-3 text-blue-800">
-        Go to Sign up Page
+        회원가입 페이지로 이동하기
       </Link>
     </main>
   );
