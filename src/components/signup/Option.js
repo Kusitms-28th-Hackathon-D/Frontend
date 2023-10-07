@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import { newUserState } from '../../states/signup';
-import { Link } from 'react-router-dom';
 
 const Option = () => {
   const selectOption = ['지채', '시각', '청각', '지적', '불편하지 않아요'];
