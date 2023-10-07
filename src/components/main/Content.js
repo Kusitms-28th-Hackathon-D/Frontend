@@ -7,6 +7,9 @@ const Content = () => {
       <Link to="/test" className="block underline mt-5 text-blue-800">
         Go to Test Page
       </Link>
+      <Link to="/login" className="block underline mt-3 text-blue-800">
+        Go to Login Page
+      </Link>
     </main>
   );
 };
