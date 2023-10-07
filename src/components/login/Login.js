@@ -34,7 +34,7 @@ const Login = () => {
         </label>
         <input
           type="email"
-          className="w-full border-2 border-gray-300 mt-2 px-3 py-2 rounded-md text-sm outline-blue-700"
+          className="w-full border-2 border-[#F2F2F2] mt-2 px-3 py-2 rounded-md text-sm outline-blue-700"
           name="email"
           id="email"
           placeholder="이메일"
@@ -50,7 +50,7 @@ const Login = () => {
         </label>
         <input
           type="password"
-          className="w-full border-2 border-gray-300 mt-2 px-3 py-2 rounded-md text-sm outline-blue-700"
+          className="w-full border-2 border-[#F2F2F2] mt-2 px-3 py-2 rounded-md text-sm outline-blue-700"
           name="password"
           id="password"
           placeholder="비밀번호"
@@ -65,7 +65,7 @@ const Login = () => {
           <div className="w-full mb-2 text-start text-sm font-semibold text-red-600">{errorMessage}</div>
         ) : null}
         <button
-          className="w-full bg-blue-700 px-3 py-2 text-white rounded-md font-medium text-sm"
+          className="w-full bg-[#55B68F] px-3 py-2 text-white rounded-full font-medium text-sm"
           onClick={handleLogin}
         >
           로그인
@@ -73,7 +73,7 @@ const Login = () => {
       </div>
       <div className="mt-3 text-sm">
         계정이 없으신가요?&nbsp;
-        <Link to="/signup" className="text-blue-700 font-bold">
+        <Link to="/signup" className="text-[#55B68F] font-bold">
           회원가입하기
         </Link>
       </div>
