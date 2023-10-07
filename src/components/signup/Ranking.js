@@ -10,6 +10,15 @@ const Ranking = () => {
   const [selectedTagIndex, setSelectedTagIndex] = useState([[-1], [-1], [-1]]); // 선택된 Tag의 인덱스, 초기값 -1로 설정
   const [newUser, setNewUser] = useRecoilState(newUserState);
   const Tags = ['경영 사무', '영업 판매', '교육 복지', '보건 의료', '예술 스포츠', '설치 정비', '농업 어업'];
+  const ETags = [
+    'ManagementandAdministration',
+    'SalesandMarketing',
+    'EducationandWelfare',
+    'HealthcareandMedical',
+    'ArtsandSports',
+    'InstallationandMaintenance',
+    'AgricultureForestryandFisheries',
+  ];
   const handleTagClick = (ranking, index) => {
     const updatedSelectedTagIndex = [...selectedTagIndex];
     updatedSelectedTagIndex[ranking] = [index];
@@ -22,10 +31,11 @@ const Ranking = () => {
       .post(process.env.REACT_APP_API + '/auth/signUp', {
         email: newUser.email,
         password: newUser.password,
-        selectedOption: newUser.selectOption,
-        fisrt: Tags[selectedTagIndex[0]],
-        second: Tags[selectedTagIndex[1]],
-        third: Tags[selectedTagIndex[2]],
+        imageUrl: newUser.image,
+        disability: newUser.disability,
+        jobPriority1: ETags[selectedTagIndex[0]],
+        jobPriority2: ETags[selectedTagIndex[1]],
+        jobPriority3: ETags[selectedTagIndex[2]],
         role: 'USER',
       })
       .then(() => {

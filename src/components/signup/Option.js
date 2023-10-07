@@ -4,7 +4,7 @@ import { useRecoilState } from 'recoil';
 import { newUserState } from '../../states/signup';
 
 const Option = () => {
-  const selectOption = ['지채', '시각', '청각', '지적', '불편하지 않아요'];
+  const selectOption = ['PhysicalDisability', 'IntellectualDisability', 'HearingImpairment', 'SpeechDisorder', 'None'];
   const [selectedIdx, setSelectedIdx] = useState(-1);
   const [newUser, setNewUser] = useRecoilState(newUserState);
 
@@ -23,7 +23,7 @@ const Option = () => {
   const handleNextClick = () => {
     setNewUser((prevUser) => ({
       ...prevUser,
-      selectOption: selectOption[selectedIdx],
+      disability: selectOption[selectedIdx],
     }));
   };
 

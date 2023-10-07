@@ -7,11 +7,13 @@ const ValidationInitialState = {
   email: false,
   password: false,
   Vpassword: false,
+  phone: false,
 };
 
 const SignUp = () => {
   const [email, setEmail] = useState();
   const [passwd, setPasswd] = useState();
+  const [phone, setPhone] = useState();
   const [validation, setValidation] = useState(ValidationInitialState);
   const [newUser, setNewUser] = useRecoilState(newUserState);
   const navigate = useNavigate();
@@ -46,6 +48,13 @@ const SignUp = () => {
         });
       }
     }
+    if (name === 'phone') {
+      setPhone(value);
+      setValidation({
+        ...validation,
+        phone: true,
+      });
+    }
   };
 
   const handleClickNext = () => {
@@ -57,6 +66,8 @@ const SignUp = () => {
     setNewUser({
       email: email,
       password: passwd,
+      phonenum: phone,
+      image: image,
     });
 
     navigate('/signup/2');
@@ -151,7 +162,7 @@ const SignUp = () => {
               name="phone"
               id="phone"
               placeholder="전화번호를 입력해주세요."
-              // onChange={handleChangeInput}
+              onChange={handleChangeInput}
             />
           </div>
           <div className="flex flex-col justify-center items-center mt-10 w-full">
