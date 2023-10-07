@@ -29,11 +29,13 @@ const Navbar = () => {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="#">List</Link>
+            <Link to="/test">Test</Link>
           </li>
         </ul>
         <ul className="flex items-center gap-5">
-          <li>Sign Up</li>
+          <li>
+            <Link to="/login">Sign up</Link>
+          </li>
           <li>
             <Link to="/login" className="block bg-blue-700 text-white font-medium text-sm px-3 py-1.5 rounded-md">
               Login

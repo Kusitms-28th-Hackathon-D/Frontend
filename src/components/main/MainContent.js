@@ -11,7 +11,7 @@ const MainContent = () => {
         Go to Login Page
       </Link>
       <Link to="/signup" className="block underline mt-3 text-blue-800">
-        Go to SignUp Page
+        Go to Sign up Page
       </Link>
     </main>
   );
