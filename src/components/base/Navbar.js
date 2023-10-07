@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
+  const [accessToken, setAccessToken] = useState('');
 
   useEffect(() => {
     const updatePosition = () => {
@@ -15,6 +16,11 @@ const Navbar = () => {
 
     return () => window.removeEventListener('scroll', updatePosition);
   }, []);
+
+  useState(() => {
+    const token = localStorage.getItem('accessToken');
+    setAccessToken(token);
+  }, [accessToken]);
 
   return (
     <nav
@@ -34,17 +40,31 @@ const Navbar = () => {
         </ul>
         <ul className="flex items-center gap-7">
           <li>
-            <Link
-              to="/login"
-              className="block bg-[#55B68F] text-white font-medium text-sm px-5 py-1.5 rounded-full text-sm"
-            >
-              로그인
-            </Link>
+            {accessToken ? (
+              <button
+                className="block bg-[#55B68F] text-white font-medium text-sm px-5 py-1.5 rounded-full text-sm"
+                onClick={() => {
+                  localStorage.setItem('accessToken', '');
+                  window.location.reload();
+                }}
+              >
+                로그아웃
+              </button>
+            ) : (
+              <Link
+                to="/login"
+                className="block bg-[#55B68F] text-white font-medium text-sm px-5 py-1.5 rounded-full text-sm"
+              >
+                로그인
+              </Link>
+            )}
           </li>
           <li>
-            <Link to="/signup" className="text-[#55B68F] font-semibold">
-              회원가입
-            </Link>
+            {!accessToken && (
+              <Link to="/signup" className="text-[#55B68F] font-semibold">
+                회원가입
+              </Link>
+            )}
           </li>
         </ul>
       </div>
