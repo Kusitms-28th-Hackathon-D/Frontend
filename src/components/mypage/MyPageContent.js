@@ -57,10 +57,6 @@ const MyPageContent = () => {
       });
   }, []);
 
-  useState(() => {
-    console.log(questionList);
-  }, [questionList]);
-
   return (
     <main>
       <section className="max-w-5xl mx-auto px-5 lg:px-0 mt-16">
@@ -114,21 +110,19 @@ const MyPageContent = () => {
         <div>
           <h4 className="text-2xl text-[#444444]">김단아님의 BEST 키워드</h4>
           <div className="flex gap-4 mt-5">
-            {['사교성이 좋아요', '업무 효율이 좋아요', '추진력', '사교적이에요', '엑셀을 잘 다뤄요'].map(
-              (label, index) => (
-                <Badge
-                  key={index}
-                  label={label}
-                  onClick={() => {
-                    if (featureList.includes(label)) {
-                      setFeatureList(featureList.filter((feature) => feature !== label));
-                    } else {
-                      setFeatureList([...featureList, label]);
-                    }
-                  }}
-                />
-              ),
-            )}
+            {keywords.map((label, index) => (
+              <Badge
+                key={index}
+                label={label}
+                onClick={() => {
+                  if (featureList.includes(label)) {
+                    setFeatureList(featureList.filter((feature) => feature !== label));
+                  } else {
+                    setFeatureList([...featureList, label]);
+                  }
+                }}
+              />
+            ))}
           </div>
           <div className="mt-24 mb-24">
             {questionList.map((question, index) => (
